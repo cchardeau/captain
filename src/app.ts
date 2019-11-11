@@ -1,5 +1,6 @@
-import * as express from 'express'
 import * as bodyParser from 'body-parser'
+import * as cors from 'cors'
+import * as express from 'express'
 import * as requestIp from 'request-ip'
 import { Request, Response } from 'express'
 
@@ -13,6 +14,7 @@ const app = express()
 const port = 3000
 
 // app configuration
+app.use(cors())
 app.use(requestIp.mw())
 app.use(bodyParser.json())
 app.disable('x-powered-by')
