@@ -1,7 +1,6 @@
-import * as config from 'config'
 import * as mongoose from 'mongoose'
 
-const url = config.get('db.url') as string
+import config from '../config'
 
 export const readyStates = ['disconnected', 'connected', 'connecting', 'disconnecting']
 
@@ -13,7 +12,7 @@ export const start = (): Promise<any> => {
   console.info('[mongo] connecting to mongo database ...')
 
   return new Promise((resolve, reject) => {
-    mongoose.connect(url, {
+    mongoose.connect(config.MONGO_URL, {
       useNewUrlParser: true,
       useCreateIndex: true,
       reconnectTries: Number.MAX_VALUE,

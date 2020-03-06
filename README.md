@@ -4,13 +4,9 @@ This project saves favorites from my [Marvel app](https://github.com/cchardeau/m
 
 ## Before starting
 
-Before launching the project, you should update the `.config/default.json` file with your MongoDB url.
+Before launching the project, you must create a `.env` file at the project root following this structure:
 ```
-{
-  "db": {
-    "url": "YOUR_MONGODB_URL_HERE"
-  }
-}
+MONGO_URL=mongodb+srv://your_mongo_url_here
 ```
 
 Then launch `npm install` to install project dependencies.
