@@ -11,7 +11,7 @@ import getFavorite from './routes/favorite/get'
 
 const app = express()
 
-const port = 3000
+const port = process.env.PORT || 3000
 
 // app configuration
 app.use(cors())
@@ -29,13 +29,9 @@ app.get('/', (req: Request, res: Response) => {
 })
 
 // launch app
-app.listen(port, async (err) => {
-  if (err) {
-    return console.error(err)
-  }
-
+app.listen(port, () => {
   // db connection
-  await mongo.start()
-
-  return console.log(`[captain] app is listening on port ${port}`)
+  mongo.start().then(() => {
+    console.log(`[captain] app is listening on port ${port}`)
+  })
 })
