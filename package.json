@@ -4,9 +4,11 @@
   "description": "Captain America, your marvel's favorite",
   "main": "dist/app.js",
   "scripts": {
+    "tsc": "tsc",
+    "build": "npm run tsc",
+    "postinstall": "npm run build",
     "dev": "nodemon",
-    "start": "tsc && node dist/app.js",
-    "build": "tsc",
+    "start": "npm run build && node dist/app.js",
     "lint": "eslint src/app.ts src/**/*.ts",
     "test": "jest"
   },
