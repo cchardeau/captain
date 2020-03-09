@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose'
 
-import config from '../config'
+import config from './config'
 
 export const readyStates = ['disconnected', 'connected', 'connecting', 'disconnecting']
 
@@ -16,7 +16,8 @@ export const start = (): Promise<any> => {
       useNewUrlParser: true,
       useCreateIndex: true,
       reconnectTries: Number.MAX_VALUE,
-      reconnectInterval: 1000
+      reconnectInterval: 1000,
+      useUnifiedTopology: true
     })
 
     mongoose.connection.on('disconnected', () => console.info('[mongo] disconnected from mongo database'))
